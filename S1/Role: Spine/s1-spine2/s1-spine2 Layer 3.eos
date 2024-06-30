@@ -1,0 +1,10 @@
+!
+! s1-spine2 Layer 3
+!
+interface Vlan112
+   ip address 10.111.112.3/24
+   ip virtual-router address 10.111.112.1
+!
+interface Vlan134
+   ip address 10.111.134.3/24
+   ip virtual-router address 10.111.134.1

@@ -1,0 +1,31 @@
+!
+! MLAG - Side B
+!
+no spanning-tree vlan-id 4094
+!
+vlan 4094
+   name MLAG_VLAN
+   trunk group MLAGPEER
+!
+interface Port-Channel1
+   description MLAG Peer-link
+   switchport mode trunk
+   switchport trunk group MLAGPEER
+!
+interface Ethernet1
+   description Po1 to MLAG Peer
+   channel-group 1 mode active
+!
+interface Ethernet6
+   description Po1 to MLAG Peer
+   channel-group 1 mode active
+!
+interface Vlan4094
+   description MLAG Peer Network
+   ip address 10.255.255.2/30
+!
+mlag configuration
+   domain-id MLAG
+   local-interface Vlan4094
+   peer-address 10.255.255.1
+   peer-link Port-Channel1

@@ -1,0 +1,11 @@
+!
+! S1 Rack 1 Hosts
+!
+interface Port-Channel4
+   description MLAG Downlink - s1-host1
+   switchport access vlan 112
+   mlag 4
+!
+interface Ethernet4
+   description MLAG Downlink - s1-host1
+   channel-group 4 mode active

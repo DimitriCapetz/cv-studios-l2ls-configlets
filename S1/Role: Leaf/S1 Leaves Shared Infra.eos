@@ -1,0 +1,15 @@
+!
+! S1 Leaves Infra
+!
+interface Port-Channel2000
+   description MLAG Uplink - s1-spine1 and s1-spine2
+   switchport mode trunk
+   mlag 2000
+!
+interface Ethernet2
+   description MLAG Uplink - s1-spine1
+   channel-group 2000 mode active
+!
+interface Ethernet3
+   description MLAG Uplink - s1-spine2
+   channel-group 2000 mode active

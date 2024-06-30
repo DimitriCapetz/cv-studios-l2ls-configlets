@@ -1,0 +1,32 @@
+!
+! Spine MLAG Downlinks to Leaves
+!
+interface Port-Channel12
+   description MLAG Downlink - s1-leaf1 and s1-leaf2
+   switchport mode trunk
+   mlag 12
+!
+interface Port-Channel34
+   description MLAG Downlink - s1-leaf3 and s1-leaf4
+   switchport mode trunk
+   mlag 34
+!
+interface Ethernet2
+   description MLAG Downlink - s1-leaf1
+   channel-group 12 mode active
+!
+interface Ethernet3
+   description MLAG Downlink - s1-leaf2
+   channel-group 12 mode active
+!
+interface Ethernet4
+   description MLAG Downlink - s1-leaf3
+   channel-group 34 mode active
+!
+interface Ethernet5
+   description MLAG Downlink - s1-leaf4
+   channel-group 34 mode active
+!
+! VARP MAC for Shared Gateway
+!
+ip virtual-router mac-address 00:1C:73:00:00:12

@@ -1,0 +1,8 @@
+!
+! S1 VLANs
+!
+vlan 112
+   name Host_Network_112
+!
+vlan 134
+   name Host_Network_134
