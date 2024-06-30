@@ -1,0 +1,52 @@
+!
+! S1 Global Config
+!
+alias 1min show log last 1 minute
+alias tail bash sudo tail -f /var/log/messages
+!
+load-interval default 5
+!
+event-monitor
+!
+logging host 10.112.112.30 514
+logging buffered 100000000 informational
+!
+snmp-server ipv4 access-list SNMP-ACL vrf management
+snmp-server community COMMUNITY ro SNMP-ACL
+snmp-server enable traps
+snmp-server community public ro
+!
+ip access-list standard snmp-acl
+   permit 10.0.0.0/8
+   permit any
+!
+mac address-table aging-time 1200
+!
+arp aging timeout default 900
+!
+banner login 
+************************************************************************
+
+   WARNING: This system is for the use of authorized clients only.
+            Individuals using the computer network system without
+            authorization, or in excess of their authorization, are
+            subject to having all their activity on this computer
+            network system monitored and recorded by system
+            personnel.  To protect the computer network system from
+            unauthorized use and to ensure the computer network systems
+            is functioning properly, system administrators monitor this
+            system.  Anyone using this computer network system
+            expressly consents to such monitoring and is advised that
+            if such monitoring reveals possible conduct of criminal
+            activity, system personnel may provide the evidence of
+            such activity to law enforcement officers.
+
+            Access is restricted to authorized users only.
+            Unauthorized access is a violation of state and federal,
+            civil and criminal laws.
+
+**************************************************************************
+EOF 
+banner motd 
+Ensure all your changes are peer reviewed!
+EOF
